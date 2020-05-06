@@ -187,8 +187,110 @@
     
 }
 
-@keyframes link-animation{
-    0% { background-color: var(--color-primary); } 
-    100% { background-color: var(--color-primary); } 
+.gallery {
+    display:flex;
+    &__photo{
+        
+        display:block; //images should be styles as block/inline-block so that no white space is there
+        width:100%;
+    }
+}
 
+.overview {
+    border-bottom: 1px solid var(--color-grey-light-2);
+    display:flex;
+    align-items: center;
+    
+    &__heading {
+        font-size: 2.25rem;
+        font-weight: 300;
+        
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 1.5rem 3rem;
+    }
+
+    &__stars {
+        display: flex; //to remove space under stars as svg icons behave as inline elements.
+        margin-right:auto; //Very good trick so that stars occupy their content width and rest is covered by margin pushing location icon to the end
+        
+    }
+
+    &__icon-star,
+    &__icon-location {
+        width:1.75rem;
+        height:1.75rem;
+        fill: var(--color-primary);
+    }
+
+    &__icon-location {
+    margin-right: 0.5rem;
+    }
+
+    &__location {
+        display: flex;
+        font-size: 1.2rem;
+        align-items: center;
+    }
+
+    &__rating {
+        background-color: var(--color-primary);
+        margin-left: 3rem;
+        color:white;
+        align-self: stretch;
+        padding: 0 2.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: -3px;
+    }
+
+    &__rating-average {
+        font-size: 2.25rem;
+        font-weight: 300;
+    }
+
+    &__rating-count {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+
+    }
+}
+
+.btn-inline {
+    color: var(--color-primary);
+    border:none;
+    border-bottom: 1px solid currentColor;
+    background-color: transparent;
+    padding-bottom: 2px;
+    display: inline-block;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-grey-dark-1);
+
+    }
+
+    &:focus {
+        outline:none;
+        animation: pulsating 1s infinite;
+    }
+
+}
+
+@keyframes pulsating {
+    0% {
+        transform: scale(1.0);
+        box-shadow: none;
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.25) ;
+    }
+    100% {
+        transform: scale(1.0);
+        box-shadow: none;
+    }
 }
