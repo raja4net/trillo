@@ -9,6 +9,13 @@
     justify-content: center;
     align-items: center;
 
+    @media only screen and (max-width:$bp-smallest) {
+       order:1; //default order is 0 for all elements
+       flex: 0 0 100%;
+       background-color: var(--color-grey-light-2);
+       
+    }
+
     &__input{
         
         background-color: var(--color-grey-light-2);
@@ -109,19 +116,33 @@
     background-color: var(--color-grey-dark-1);
     flex-direction: column;
     justify-content: space-between;
+    
 }
 
 .side-nav {
+    
     font-size: 1.4rem;
     margin-top: 3.5rem;
     align-items: center;
     list-style: none;
+    @media only screen and (max-width:$bp-medium) {
+            display: flex;
+            margin:0;
+        }
     
 
     &__item{
         position:relative;
         &:not(:last-child){
             margin-bottom: 0.5rem;
+            @media only screen and (max-width:$bp-medium) {
+                margin-bottom:0;
+            }
+        }
+
+        @media only screen and (max-width:$bp-medium) {
+            flex:1;
+           
         }
     }
 
@@ -159,6 +180,16 @@
         text-transform: uppercase;
         align-items: center;
         padding: 1.5rem 3rem;
+
+        @media only screen and (max-width:$bp-medium) {
+            justify-content: center;
+            padding:2rem;
+        }
+
+        @media only screen and (max-width:$bp-medium) {
+            flex-direction: column;
+            padding: 1.5rem 0.5rem;
+        }
     }
 
      &-foooter > p {
@@ -174,6 +205,13 @@
         align-self: center;
         fill: currentColor;
         margin-right:1rem;
+
+        @media only screen and (max-width:$bp-medium) {
+            margin-right: 0;
+            margin-bottom: 0.7rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
         
     }
     
@@ -184,6 +222,11 @@
     color: var(--color-grey-light-4);
     text-align: center;
     padding:2.5rem;
+
+    @media only screen and (max-width:$bp-medium) {
+        display: none;
+       
+    }
     
 }
 
@@ -208,6 +251,11 @@
         letter-spacing: 1px;
         text-transform: uppercase;
         padding: 1.5rem 3rem;
+
+        @media only screen and (max-width:$bp-medium) {
+            padding:1.25rem 2rem;
+            font-size: 1.8rem;
+        }
     }
 
     &__stars {
@@ -244,16 +292,27 @@
         align-items: center;
         flex-direction: column;
         margin-bottom: -3px;
+
+        @media only screen and (max-width:$bp-medium) {
+            padding:0rem 1.5rem;
+        }
     }
 
     &__rating-average {
         font-size: 2.25rem;
         font-weight: 300;
+        @media only screen and (max-width:$bp-medium) {
+            font-size: 1.8rem;
+        }
     }
 
     &__rating-count {
         font-size: 0.8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width:$bp-medium) {
+           font-size: 0.5rem;
+        }
 
     }
 }
@@ -316,6 +375,9 @@
     border-bottom: var(--line);
     padding: 3rem 0;
     margin: 3rem 0;
+    @media only screen and (max-width:$bp-medium) {
+    flex-direction: row;
+}
 
     &__item{
         flex: 00 50%;
@@ -330,15 +392,19 @@
         margin-right: 0.7rem;
 
         //for older browsers
-        //background-image: url(../img/chevron-thin-right.svg);
-        //backgroung-size: cover;
+        background-image: url(../img/chevron-thin-right.svg);
+        background-size: cover;
 
         //for new browsers - masks
-        background-color: var(--color-primary);
-        -webkit-mask-image: url(../img/chevron-thin-right.svg);
-        -webkit-mask-size: cover;
-        mask-image: url(../img/chevron-thin-right.svg);
-        mask-size: cover;
+        @supports (-webkit-mask-image: url()) or (mask-image:url()){
+            background-color: var(--color-primary);
+            -webkit-mask-image: url(../img/chevron-thin-right.svg);
+            -webkit-mask-size: cover;
+            mask-image: url(../img/chevron-thin-right.svg);
+            mask-size: cover;
+            background-image: none;
+        }
+       
         
     }
 
@@ -358,7 +424,7 @@
         width: 4rem;
         height:4rem;
         border-radius: 50%;
-        margin-right: -1.5rem;
+        margin-right: -2rem;
         border: 3px solid white;
         box-sizing: content-box; //so that border is outside images & does not decrease image size
     }
@@ -376,7 +442,10 @@
     flex-wrap: wrap;
     position:relative;
     overflow: hidden;
-    
+    @media only screen and (max-width:$bp-medium) {
+        padding:2rem;
+        margin-bottom: 3rem;
+    }
     
 
     &__text {
@@ -388,6 +457,10 @@
     &__user {
         display:flex;
         align-items: center;
+    }
+
+    &__firends {
+        display: flex;
     }
 
     &__photo {
@@ -436,6 +509,9 @@
 .cta {
 margin: 3.5rem 0;
 text-align: center;
+@media only screen and (max-width:$bp-medium) {
+    padding:2.5rem 0;
+}
 
 
     &__book-now {
